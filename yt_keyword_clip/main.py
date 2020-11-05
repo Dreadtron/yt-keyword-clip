@@ -4,7 +4,7 @@ from yt_keyword_clip.settings import YT_API_KEY
 
 
 def get_all_video_in_channel(channel_id):
-    api_key = YT_API_KEY  # get environment variable with python-dotenv
+    api_key = YT_API_KEY  # get environment variable with python-dotenv, see .env
 
     base_video_url = 'https://www.youtube.com/watch?v='
     base_search_url = 'https://www.googleapis.com/youtube/v3/search?'
