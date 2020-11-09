@@ -1,4 +1,5 @@
 import os
+
 from yt_keyword_clip.settings import DOWNLOADS_DIR, CAP_DIR, VID_DIR
 
 
@@ -18,13 +19,6 @@ class Utils:
         path = self.get_list_dir(channel_id)
         return os.path.exists(path) and os.path.getsize(path) > 0
 
-    @staticmethod
-    def url_vid_id(url):
-        return url.split("watch?v=")[-1]
-
-    def get_cap_dir(self, url):
-        return os.path.join(CAP_DIR, self.url_vid_id(url) + ".txt")
-
-    def check_cap_dup(self, url):
-        path = self.get_cap_dir(url)
+    def check_cap_dup(self, ytvideo):
+        path = ytvideo.cap_dir
         return os.path.exists(path) and os.path.getsize(path) > 0

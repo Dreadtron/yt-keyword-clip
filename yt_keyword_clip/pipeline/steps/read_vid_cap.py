@@ -1,23 +1,19 @@
-import os
-
-from pprint import pprint
-
 from .step import Step
-from yt_keyword_clip.settings import CAP_DIR
 
 
 class ReadVidCap(Step):
     def process(self, data, inputs, utils):
-        # {dict_cap_data} structure: {"cap_file": {"cap_content": "timestamp"}}
         # {dict_captions} structure: {"cap_content": "timestamp"}
         # cap_file: captions files. name structure: "(filename).txt"
         # time_stamp: boolean for whether this line is a caption timestamp
         # cap_time: caption timestamp. structure: "(time) --> (time)"
         # cap_content: caption itself. structure: "(captions)"
-        dict_cap_data = {}
-        for cap_file in os.listdir(CAP_DIR):
+        for ytvideo in data:
+            if not utils.check_cap_dup(ytvideo):
+                continue
+
             dict_captions = {}
-            with open(os.path.join(CAP_DIR,cap_file), "r") as caption:
+            with open(ytvideo.cap_dir, "r") as caption:
                 time_stamp = False
                 cap_time = None
                 cap_content = None
@@ -31,7 +27,5 @@ class ReadVidCap(Step):
                         cap_content = line
                         dict_captions[cap_content] = cap_time  # for loop will search for dict key
                         time_stamp = False
-            dict_cap_data[cap_file] = dict_captions
-        pprint(dict_cap_data)
-        return dict_cap_data
-
+            ytvideo.captions = dict_captions
+        return data
