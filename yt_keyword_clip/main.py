@@ -3,6 +3,7 @@ from yt_keyword_clip.pipeline.pipeline import Pipeline
 from yt_keyword_clip.pipeline.steps.preflight import Preflight
 from yt_keyword_clip.pipeline.steps.get_vid_list import GetVidList
 from yt_keyword_clip.pipeline.steps.get_vid_cap import GetVidCap
+from yt_keyword_clip.pipeline.steps.read_vid_cap import ReadVidCap
 from yt_keyword_clip.pipeline.steps.postflight import Postflight
 
 CHN_id = "UCKSVUHI9rbbkXhvAXK-2uxA"
@@ -16,6 +17,7 @@ def main():
         Preflight(),
         GetVidList(),
         GetVidCap(),
+        ReadVidCap(),
         Postflight()
     ]
 
