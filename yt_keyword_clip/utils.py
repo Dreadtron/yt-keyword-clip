@@ -1,6 +1,6 @@
 import os
 
-from yt_keyword_clip.settings import DOWNLOADS_DIR, CAP_DIR, VID_DIR
+from yt_keyword_clip.settings import DOWNLOADS_DIR, CAP_DIR, VID_DIR, ClIP_DIR
 
 
 class Utils:
@@ -11,9 +11,14 @@ class Utils:
         os.makedirs(DOWNLOADS_DIR, exist_ok=True)
         os.makedirs(CAP_DIR, exist_ok=True)
         os.makedirs(VID_DIR, exist_ok=True)
+        os.makedirs(ClIP_DIR, exist_ok=True)
 
     def get_list_dir(self, channel_id):
         return os.path.join(DOWNLOADS_DIR, channel_id + ".txt")
+
+    def get_clip_dir(self, channel_id, keyword):
+        clip_name = f"[{keyword}]{channel_id}.mp4"
+        return os.path.join(ClIP_DIR, clip_name)
 
     def check_list_dup(self, channel_id):
         path = self.get_list_dir(channel_id)
