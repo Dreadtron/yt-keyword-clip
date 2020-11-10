@@ -6,6 +6,7 @@ from yt_keyword_clip.pipeline.steps.make_vid_ytvideo import MakeVidYTVideo
 from yt_keyword_clip.pipeline.steps.get_vid_cap import GetVidCap
 from yt_keyword_clip.pipeline.steps.read_vid_cap import ReadVidCap
 from yt_keyword_clip.pipeline.steps.search_vid_cap import SearchVidCap
+from yt_keyword_clip.pipeline.steps.get_vid_file import GetVidFile
 from yt_keyword_clip.pipeline.steps.postflight import Postflight
 
 CHN_id = "UCKSVUHI9rbbkXhvAXK-2uxA"
@@ -23,6 +24,7 @@ def main():
         GetVidCap(),
         ReadVidCap(),
         SearchVidCap(),
+        GetVidFile(),
         Postflight(),
     ]
 

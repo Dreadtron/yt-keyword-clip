@@ -29,4 +29,4 @@ class YTVideo:
         return os.path.join(CAP_DIR, self.id + ".txt")
 
     def get_vid_dir(self):
-        return os.path.join(VID_DIR, self.id + ".txt")
+        return os.path.join(VID_DIR, self.id + ".mp4")

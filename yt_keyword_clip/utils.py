@@ -22,3 +22,7 @@ class Utils:
     def check_cap_dup(self, ytvideo):
         path = ytvideo.cap_dir
         return os.path.exists(path) and os.path.getsize(path) > 0
+
+    def check_vid_dup(self, ytvideo):
+        path = ytvideo.vid_dir
+        return os.path.exists(path) and os.path.getsize(path) > 0

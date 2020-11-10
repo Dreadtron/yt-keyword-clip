@@ -25,6 +25,7 @@ class GetVidCap(Step):
                 continue
             except AttributeError as e:
                 print(f"!!! Attribute error: {e} for {ytvideo.url}")
+                continue
 
             # save the caption to a file
             text_file = open(ytvideo.get_cap_dir(), "w", encoding="utf-8")
