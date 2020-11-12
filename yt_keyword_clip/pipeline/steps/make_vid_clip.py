@@ -15,11 +15,12 @@ class MakeVidClip(Step):
             vid_clip = VideoFileClip(vid_dir).subclip(start_time, end_time)
             clips.append(vid_clip)
             vid_clip.reader.close()  # this line sometimes prevent a moviepy error message after final_clip is generated
-            if len(clips) > inputs["clip_limit"]:
+            if len(clips) > int(inputs["clip_limit"]):
                 ans = input("Reached clip limit. Continue? (y/n)")
                 if ans == "y":
-                    print("Double clip limit.")
-                    inputs["clip_limit"] += 30
+                    limit = int(inputs["clip_limit"])
+                    print("Add 20 to clip limit.")
+                    inputs["clip_limit"] = limit + 20
                 else:
                     print("Reached clip limit.")
                     break
