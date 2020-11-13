@@ -1,3 +1,5 @@
+import logging
+
 from .step import Step
 from yt_keyword_clip.model.sresults import SResults
 
@@ -17,5 +19,5 @@ class SearchVidCap(Step):
                     search_result = SResults(ytvideo, cap_content, cap_time)
                     results.append(search_result)
                     # print(f"Found <{keyword}> at <{cap_time}> in <{ytvideo.id}>")
-        print(f"Found {len(results)} matches")
+        logging.getLogger("main_logger").info(f"Found {len(results)} matches")
         return results

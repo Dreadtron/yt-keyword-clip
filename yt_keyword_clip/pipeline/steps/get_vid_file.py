@@ -1,3 +1,4 @@
+import logging
 from pytube import YouTube
 from pytube.exceptions import RegexMatchError
 
@@ -8,7 +9,7 @@ from yt_keyword_clip.settings import VID_DIR  # sreuslts.ytvideo.vid_dir is an a
 class GetVidFile(Step):
     def process(self, data, inputs, utils):
         unique_sresult = set([sresults.ytvideo for sresults in data])
-        print(f" Files needs to download: {len(unique_sresult)}")
+        logging.getLogger("main_logger").info(f"Files needed: {len(unique_sresult)}")
         for ytvideo in unique_sresult:
             url = ytvideo.url
             id = ytvideo.id
@@ -19,6 +20,6 @@ class GetVidFile(Step):
             try:
                 YouTube(url).streams.first().download(output_path=VID_DIR, filename=id)
             except RegexMatchError as e:
-                print(f"!!! Pytube error: {e} for {url}")
+                logging.getLogger("main_logger").warning(f"!!! Pytube error: {e} for {url}")
                 continue
         return data

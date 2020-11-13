@@ -1,3 +1,5 @@
+import logging
+
 from moviepy.editor import VideoFileClip, CompositeVideoClip, TextClip, concatenate_videoclips
 
 from .step import Step

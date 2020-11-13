@@ -1,4 +1,5 @@
 import time
+import logging
 from multiprocessing import Process
 
 from pytube import YouTube
@@ -20,7 +21,7 @@ class GetVidCap(Step):
         for process in processes:
             process.join()
 
-        print(f"Took {time.time() - start} seconds.")
+        logging.getLogger("main_logger").info(f"Getting captions took {time.time() - start} seconds.")
         return data
 
     def getvidcap(self, data, utils):
@@ -35,13 +36,13 @@ class GetVidCap(Step):
                 en_caption_convert_to_srt = (en_caption.generate_srt_captions())
                 print(f"File <{ytvideo.url_vid_id(ytvideo.url)}> completed")
             except RegexMatchError as e:
-                print(f"!!! Pytube error: {e} for {ytvideo.url}")
+                logging.getLogger("main_logger").warning(f"!!! Regex error: {e} for {ytvideo.url}")
                 continue
             except AttributeError as e:
-                print(f"!!! Attribute error: {e} for {ytvideo.url}")
+                logging.getLogger("main_logger").warning(f"!!! Attribute error: {e} for {ytvideo.url}")
                 continue
             except KeyError as e:
-                print(f"!!! Key error: {e} for {ytvideo.url}")
+                logging.getLogger("main_logger").warning(f"!!! Key error: {e} for {ytvideo.url}")
                 continue
 
             # save the caption to a file

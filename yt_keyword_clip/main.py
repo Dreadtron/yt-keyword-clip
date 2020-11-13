@@ -1,7 +1,9 @@
 import sys
 import getopt
+import logging
 
 from yt_keyword_clip.utils import Utils
+from yt_keyword_clip.logger import main_logger
 from yt_keyword_clip.pipeline.pipeline import Pipeline
 from yt_keyword_clip.pipeline.steps.preflight import Preflight
 from yt_keyword_clip.pipeline.steps.get_vid_list import GetVidList
@@ -24,7 +26,7 @@ def print_usage():
 
 CHN_ID = "UCKSVUHI9rbbkXhvAXK-2uxA"
 KeyWrd = "incredible"
-ClpLmt = 30
+ClpLmt = 10
 
 
 def main():
@@ -72,6 +74,8 @@ def main():
     ]
 
     utils = Utils()
+    main_logger()
+    # logging.getLogger("main_logger").warning("test2")
     p = Pipeline(steps)
     p.run(inputs, utils)
 

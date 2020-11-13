@@ -10,4 +10,5 @@ DOWNLOADS_DIR = "downloads"
 CAP_DIR = os.path.join(DOWNLOADS_DIR, "captions")
 VID_DIR = os.path.join(DOWNLOADS_DIR, "videos")
 ClIP_DIR = os.path.join(DOWNLOADS_DIR, "clips")
+LOG_DIR = os.path.join(DOWNLOADS_DIR, "logs")
 

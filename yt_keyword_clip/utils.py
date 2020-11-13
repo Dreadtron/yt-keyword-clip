@@ -2,7 +2,6 @@ import os
 
 from yt_keyword_clip.settings import DOWNLOADS_DIR, CAP_DIR, VID_DIR, ClIP_DIR
 
-
 class Utils:
     def __init__(self):
         pass
@@ -12,6 +11,7 @@ class Utils:
         os.makedirs(CAP_DIR, exist_ok=True)
         os.makedirs(VID_DIR, exist_ok=True)
         os.makedirs(ClIP_DIR, exist_ok=True)
+
 
     def get_list_dir(self, channel_id):
         return os.path.join(DOWNLOADS_DIR, channel_id + ".txt")

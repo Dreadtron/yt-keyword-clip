@@ -1,5 +1,6 @@
 import urllib.request
 import json
+import logging
 
 from yt_keyword_clip.pipeline.steps.step import Step
 from yt_keyword_clip.settings import YT_API_KEY  # get environment variable with python-dotenv, see .env
@@ -34,7 +35,7 @@ class GetVidList(Step):
                 url = first_url + '&pageToken={}'.format(next_page_token)
             except KeyError:
                 break
-        print(video_links)
+        # print(video_links)
         self.list_to_file(video_links, utils.get_list_dir(channel_id))
         return video_links
 
